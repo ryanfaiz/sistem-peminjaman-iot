@@ -1,11 +1,115 @@
-@import 'tailwindcss';
-
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
-
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+:root{
+  --jc-navy: #0b2b3a;
+  --jc-ink: #263238;
+  --jc-accent: #b30000;
+  --jc-muted: #6c757d;
+  --jc-bg: #fbfbfc;
+  --jc-surface: #ffffff;
 }
+
+html,body{
+  font-family: 'Noto Sans JP', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  color: var(--jc-ink);
+  background-color: var(--jc-bg);
+}
+
+/* Navbar */
+.navbar-top, .navbar {
+  background-color: var(--jc-surface) !important;
+  border-bottom: 1px solid #e9edf1;
+}
+
+.navbar-brand {
+  color: var(--jc-navy) !important;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.navbar .nav-link {
+  color: var(--jc-ink) !important;
+}
+
+/* Sidebar tweaks */
+.sidebar {
+  background: linear-gradient(180deg,#fff,#fbfdff);
+  border-right: 1px solid #edf2f4;
+}
+.sidebar .nav-link {
+  color: var(--jc-ink) !important;
+}
+.sidebar .nav-link.active {
+  background: linear-gradient(90deg, rgba(11,43,58,0.06), rgba(179,0,0,0.02));
+  color: var(--jc-navy) !important;
+  border-left: 3px solid var(--jc-accent);
+}
+
+/* Cards */
+.card {
+  border: 1px solid #eff3f6;
+  border-radius: 8px;
+  background: var(--jc-surface);
+  box-shadow: 0 1px 2px rgba(18,38,56,0.03);
+}
+.card .card-header {
+  background: transparent;
+  border-bottom: none;
+  font-weight: 600;
+  color: var(--jc-ink);
+}
+
+/* Buttons - subtle corporate style */
+.btn-primary {
+  background-color: var(--jc-navy) !important;
+  border-color: var(--jc-navy) !important;
+}
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #062029 !important;
+  border-color: #062029 !important;
+}
+.btn-outline-danger {
+  color: var(--jc-accent) !important;
+  border-color: rgba(179,0,0,0.14) !important;
+}
+.btn-outline-danger:hover{
+  background: rgba(179,0,0,0.03) !important;
+}
+
+/* Hero patterns for welcome page */
+.hero{
+  background: linear-gradient(180deg, rgba(11,43,58,0.03), rgba(255,255,255,0.0));
+  border-bottom: 1px solid #eef3f6;
+}
+.hero h1{
+  color: var(--jc-navy);
+  font-weight: 700;
+}
+.hero p.lead{ color: #4b5563; }
+
+.feature-icon{ background:#fff;border:1px solid #eef3f6;color:var(--jc-navy);}
+
+/* Table / Data visual */
+.table thead th { background: #fbfcfd; color: var(--jc-ink); }
+.badge { border-radius: 6px; }
+
+/* Image card styling */
+.object-fit-cover{ object-fit: cover; height:100%; width:100%; }
+.ratio-4x3 { background: #f8fafb; display:block; }
+
+/* Footer */
+footer{ border-top: 1px solid #eef3f6; background: #fff; }
+
+/* Responsive tweaks */
+@media (max-width: 767.98px){
+  .navbar-brand { font-size: 1rem; }
+}
+
+/* Small utility to subtly emphasize form labels */
+.form-label { color: var(--jc-muted); font-weight:500; }
+
+/* Ensure DataTables buttons match style */
+.dt-buttons .btn, .dt-button { background: transparent; border:1px solid #e6eef4; color:var(--jc-ink); }
+
+/* Small touch on links */
+a { color: var(--jc-navy); }
+
+a.text-primary { color: var(--jc-navy) !important; }
