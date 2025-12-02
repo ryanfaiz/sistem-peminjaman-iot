@@ -12,7 +12,7 @@
 
         <div class="d-flex gap-2">
             <a href="{{ route('user.borrow.index') }}" class="btn btn-outline-secondary btn-sm">Kembali</a>
-            <a href="{{ route('user.borrow.export', $loan) }}" class="btn btn-primary btn-sm" target="_blank">Print</a>
+            <a href="{{ route('user.borrow.export', ['borrow' => $loan->id]) }}" class="btn btn-primary btn-sm" target="_blank">Print</a>
         </div>
     </div>
 

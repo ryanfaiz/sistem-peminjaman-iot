@@ -7,7 +7,11 @@
 
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="h3 mb-0 text-gray-800">Daftar Peminjaman</h1>
-
+        @auth
+            @if(!auth()->user()->isAdmin())
+            <a href="{{ route('user.borrow.create') }}" class="btn btn-success btn-sm">Buat Peminjaman Baru</a>
+            @endif
+        @endauth
     </div>
 
     <div class="card shadow">
@@ -51,17 +55,21 @@
                                 @auth
                                     @if(auth()->user()->hasRole('admin'))
                                         <a href="{{ route('admin.loans.edit', $loan) }}" class="btn btn-sm btn-outline-warning" title="Edit"><i class="fas fa-edit"></i></a>
-                                    @endif
                                     @else
                                         <a href="{{ route('user.borrow.show', $loan) }}" class="btn btn-sm btn-outline-primary" title="Lihat Detail"><i class="fas fa-eye"></i></a>
+                                    @endif
                                 @endauth
                             </td>
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="6" class="text-center text-muted py-3">
-                                Tidak ada data peminjaman.
-                            </td>
+                            <td class="text-center text-muted py-3">Tidak ada data peminjaman.</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         @endforelse
                     </tbody>

@@ -80,6 +80,12 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="form-check my-3">
+            <input class="form-check-input" type="checkbox" name="consent" id="consent" value="1" required {{ old('consent') ? 'checked' : '' }}>
+            <label class="form-check-label" for="consent">
+                Dengan ini saya bertanggung jawab atas penggunaan barang yang saya pinjam dan akan mengganti dan melaporkan jika terjadi kerusakan/hilang.
+            </label>
+        </div>
 
         <button type="submit" class="btn btn-primary">Ajukan Peminjaman</button>
     </form>

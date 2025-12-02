@@ -141,9 +141,9 @@
                                     <option value="{{ route('admin.loans.approve', $loan) }}">Setujui</option>
                                     <option value="{{ route('admin.loans.reject', $loan) }}">Tolak</option>
                                 @elseif($loan->status === 'disetujui')
-                                    <option value="{{ route('admin.loans.setBorrowed', $loan) }}">Dipinjam</option>
+                                    <option value="{{ route('admin.loans.borrow', $loan) }}">Dipinjam</option>
                                 @elseif($loan->status === 'dipinjam')
-                                    <option value="{{ route('admin.loans.setReturned', $loan) }}">Dikembalikan</option>
+                                    <option value="{{ route('admin.loans.return', $loan) }}">Dikembalikan</option>
                                 @endif
                             </select>
                         </div>

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->timestamp('approved_at')->nullable();
             $table->timestamp('returned_at')->nullable();            
             $table->text('purpose');
+            $table->boolean('consent')->default(true);
             $table->text('admin_notes')->nullable();
             $table->timestamps(); 
             $table->index('status');

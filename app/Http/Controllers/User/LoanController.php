@@ -24,9 +24,10 @@ class LoanController extends Controller
         return view('loans.create', compact('items'));
     }
 
-    public function show(Loan $loan)
+    public function show(Loan $borrow)
     {
-        $loan->load('items');
+        $borrow->load('items');
+        $loan = $borrow;
         return view('loans.show', compact('loan'));
     }
 
@@ -53,6 +54,7 @@ class LoanController extends Controller
             'loan_date' => 'required|date|after_or_equal:today',
             'due_date' => 'required|date|after_or_equal:loan_date',
             'purpose' => 'required|string|max:255',
+            'consent' => 'accepted',
         ]);
 
     $selectedItems = collect($request->input('items', []))

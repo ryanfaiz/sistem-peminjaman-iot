@@ -23,6 +23,7 @@ class LoanFactory extends Factory
             'status' => $status,
             'purpose' => $this->faker->sentence(),
             'admin_notes' => null,
+            'consent' => true,
         ];
 
         if ($status === 'disetujui' || $status === 'dipinjam') {

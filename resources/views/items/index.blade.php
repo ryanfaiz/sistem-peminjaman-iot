@@ -57,7 +57,7 @@
                             </td>
                             <td class="text-center">
                                 @auth
-                                @if(auth()->user()->hasRole('admin'))
+                                    @if(auth()->user()->hasRole('admin'))
                                         <a href="{{ route('admin.items.show', $item) }}" class="btn btn-sm btn-outline-primary" title="Lihat"><i class="fas fa-eye"></i></a>
                                         <a href="{{ route('admin.items.edit', $item) }}" class="btn btn-sm btn-outline-warning me-1">
                                             <i class="fas fa-edit"></i>
@@ -71,9 +71,9 @@
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </form>
-                                    @endif
                                     @else
                                         <a href="{{ route('user.items.show', $item) }}" class="btn btn-sm btn-outline-primary" title="Lihat"><i class="fas fa-eye"></i></a>
+                                    @endif
                                 @endauth
                             </td>
                         </tr>

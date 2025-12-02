@@ -20,6 +20,7 @@ class Loan extends Model
         'approved_at',
         'returned_at',
         'purpose',
+        'consent',
         'admin_notes',
     ];
 
