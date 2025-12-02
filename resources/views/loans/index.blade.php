@@ -50,7 +50,7 @@
                             <td>
                                 @auth
                                     @if(auth()->user()->hasRole('admin'))
-                                        <a href="{{ route('admin.loans.show', $loan) }}" class="btn btn-sm btn-outline-warning" title="Edit"><i class="fas fa-edit"></i></a>
+                                        <a href="{{ route('admin.loans.edit', $loan) }}" class="btn btn-sm btn-outline-warning" title="Edit"><i class="fas fa-edit"></i></a>
                                     @endif
                                     @else
                                         <a href="{{ route('user.borrow.show', $loan) }}" class="btn btn-sm btn-outline-primary" title="Lihat Detail"><i class="fas fa-eye"></i></a>

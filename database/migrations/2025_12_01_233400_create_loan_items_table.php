@@ -11,8 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Tabel pivot ini menyimpan detail item yang dipinjam dalam satu transaksi Loan.
         Schema::create('loan_items', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('loan_id')->constrained('loans')->onDelete('cascade');
+            $table->foreignId('item_id')->constrained('items')->onDelete('restrict');
+
+            $table->integer('quantity');
+
+            $table->unique(['loan_id', 'item_id']);
+
             $table->timestamps();
         });
     }

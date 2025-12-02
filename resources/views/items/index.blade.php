@@ -56,11 +56,9 @@
                                 <span class="badge bg-{{ $item->available_quantity > 0 ? 'success' : 'danger' }}">{{ $item->available_quantity }}</span>
                             </td>
                             <td class="text-center">
-                                <a href="{{ route('user.items.show', $item) }}" class="btn btn-sm btn-info text-white me-1">
-                                    <i class="fas fa-eye"></i>
-                                </a>
                                 @auth
-                                    @if(auth()->user()->hasRole('admin'))
+                                @if(auth()->user()->hasRole('admin'))
+                                        <a href="{{ route('admin.items.show', $item) }}" class="btn btn-sm btn-outline-primary" title="Lihat"><i class="fas fa-eye"></i></a>
                                         <a href="{{ route('admin.items.edit', $item) }}" class="btn btn-sm btn-outline-warning me-1">
                                             <i class="fas fa-edit"></i>
                                         </a>
@@ -74,6 +72,8 @@
                                             </button>
                                         </form>
                                     @endif
+                                    @else
+                                        <a href="{{ route('user.items.show', $item) }}" class="btn btn-sm btn-outline-primary" title="Lihat"><i class="fas fa-eye"></i></a>
                                 @endauth
                             </td>
                         </tr>

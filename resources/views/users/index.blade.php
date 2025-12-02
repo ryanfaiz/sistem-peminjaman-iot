@@ -28,7 +28,6 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ ucfirst($user->role) }}</td>
                             <td>
-                                <a href="{{ route('admin.users.show', $user) }}" class="btn btn-sm btn-outline-info" title="Lihat"><i class="fas fa-eye"></i></a>
                                 <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-sm btn-outline-warning" title="Edit"><i class="fas fa-edit"></i></a>
                             </td>
                         </tr>
