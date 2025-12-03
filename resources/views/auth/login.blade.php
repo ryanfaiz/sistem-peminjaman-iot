@@ -22,7 +22,6 @@
                 <a class="navbar-brand fw-bold text-primary" href="{{ url('/') }}">{{ config('app.name', 'Sistem Peminjaman IoT') }}</a>
                 <div class="d-none d-md-block">
                     <a class="btn btn-outline-secondary btn-sm me-2" href="{{ url('/') }}">Beranda</a>
-                    <a class="btn btn-outline-secondary btn-sm" href="#">Bantuan</a>
                 </div>
             </div>
         </header>
