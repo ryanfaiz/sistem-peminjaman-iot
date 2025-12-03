@@ -25,11 +25,16 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . $user->id,
-            'role' => 'required|string|in:admin,user',
-            'is_active' => 'required|boolean',
+            'role' => 'required|string|in:mahasiswa,dosen,admin',
+            'is_active' => 'nullable|boolean',
         ]);
 
-        $user->update($request->only('name', 'email', 'role', 'is_active'));
+        $data = $request->only('name', 'email', 'role', 'is_active');
+        if (isset($data['role'])) {
+            $data['role'] = strtolower($data['role']);
+        }
+
+        $user->update($data);
 
         return redirect()->route('admin.users.index')->with('success', 'Pengguna berhasil diperbarui.');
     }

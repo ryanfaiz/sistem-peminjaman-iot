@@ -36,8 +36,9 @@
                         <div class="mb-3">
                             <label for="role" class="form-label">Role</label>
                             <select name="role" id="role" class="form-select" required>
-                                <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>Admin</option>
-                                <option value="user" {{ $user->role === 'user' ? 'selected' : '' }}>User</option>
+                                <option value="mahasiswa" {{ strtolower(old('role', $user->role)) === 'mahasiswa' ? 'selected' : '' }}>Mahasiswa</option>
+                                <option value="dosen" {{ strtolower(old('role', $user->role)) === 'dosen' ? 'selected' : '' }}>Dosen</option>
+                                <option value="admin" {{ strtolower(old('role', $user->role)) === 'admin' ? 'selected' : '' }}>Admin</option>
                             </select>
                         </div>
 
