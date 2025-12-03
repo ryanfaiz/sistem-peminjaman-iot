@@ -94,26 +94,47 @@ class LoanController extends Controller
     }
 
     public function return(Request $request, Loan $loan)
-{
-    $loan->update([
-        'status' => 'dikembalikan',
-        'returned_at' => now(),
-    ]);
+    {
+        $adminNote = trim($request->input('admin_notes', ''));
 
-    $adminNote = trim($request->input('admin_notes', ''));
-    if ($adminNote !== '') {
-        $entry = '[' . Carbon::now()->format('Y-m-d H:i') . '] ' . Auth::user()->name . ' : ' . $adminNote;
-        $loan->admin_notes = trim(($loan->admin_notes ? $loan->admin_notes . "\n" : '') . $entry);
-        $loan->save();
+        try {
+            DB::transaction(function () use ($loan, $adminNote) {
+                $loan->load('items');
+
+                foreach ($loan->items as $item) {
+                    $qty = (int) ($item->pivot->quantity ?? 0);
+                    if ($qty <= 0) continue;
+
+                    $item->increment('available_quantity', $qty);
+
+                    if (! is_null($item->total_quantity)) {
+                        // perform a conditional update only when available_quantity > total_quantitys
+                        DB::table('items')
+                            ->where('id', $item->id)
+                            ->whereColumn('available_quantity', '>', 'total_quantity')
+                            ->update(['available_quantity' => $item->total_quantity]);
+                    }
+                }
+
+                if ($adminNote !== '') {
+                    $entry = '[' . Carbon::now()->format('Y-m-d H:i') . '] ' . Auth::user()->name . ' : ' . $adminNote;
+                    $loan->admin_notes = trim(($loan->admin_notes ? $loan->admin_notes . "\n" : '') . $entry);
+                }
+
+                $loan->status = 'dikembalikan';
+                $loan->returned_at = Carbon::now();
+                $loan->save();
+            });
+
+            return redirect()->route('admin.loans.edit', $loan)
+                ->with('success', 'Status pinjaman diubah menjadi Dikembalikan.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal mengubah status menjadi Dikembalikan: ' . $e->getMessage());
+        }
     }
-
-    return redirect()->route('admin.loans.edit', $loan)
-        ->with('success', 'Status pinjaman diubah menjadi Dikembalikan.');
-}
 
     public function borrow(Request $request, Loan $loan)
     {
-        // contoh logika
         $loan->status = 'dipinjam';
 
         $adminNote = trim($request->input('admin_notes', ''));
