@@ -41,8 +41,8 @@
                             <label for="condition" class="form-label">Kondisi Barang <span class="text-danger">*</span></label>
                             <select class="form-select @error('condition') is-invalid @enderror" id="condition" name="condition" required>
                                 <option value="Baik" {{ old('condition') == 'Baik' ? 'selected' : '' }}>Baik</option>
-                                <option value="Perlu Perawatan" {{ old('condition') == 'Perlu Perawatan' ? 'selected' : '' }}>Perlu Perawatan</option>
-                                <option value="Rusak" {{ old('condition') == 'Rusak' ? 'selected' : '' }}>Rusak</option>
+                                <option value="Rusak Ringan" {{ old('condition') == 'Rusak Ringan' ? 'selected' : '' }}>Rusak Ringan</option>
+                                <option value="Rusak Berat" {{ old('condition') == 'Rusak Berat' ? 'selected' : '' }}>Rusak Berat</option>
                             </select>
                             @error('condition') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
