@@ -30,38 +30,38 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 2. Buat Beberapa Dosen
-        $dosens = User::factory()->dosen()->count(5)->create([
-            'password' => Hash::make('password'),
-        ]);
+        // // 2. Buat Beberapa Dosen
+        // $dosens = User::factory()->dosen()->count(5)->create([
+        //     'password' => Hash::make('password'),
+        // ]);
 
-        // 3. Buat Banyak Mahasiswa
-        $mahasiswas = User::factory()->count(20)->create([
-            'password' => Hash::make('password'),
-        ]);
+        // // 3. Buat Banyak Mahasiswa
+        // $mahasiswas = User::factory()->count(20)->create([
+        //     'password' => Hash::make('password'),
+        // ]);
 
-        // 4. Buat Data Inventaris Barang
-        $items = Item::factory()->count(5)->create();
+        // // 4. Buat Data Inventaris Barang
+        // $items = Item::factory()->count(5)->create();
 
-        // 5. Buat beberapa barang yang rusak untuk pengujian kondisi
-        $brokenItems = Item::factory()->count(3)->broken()->create();
+        // // 5. Buat beberapa barang yang rusak untuk pengujian kondisi
+        // $brokenItems = Item::factory()->count(3)->broken()->create();
 
-        // 6. Buat data peminjaman (Loan) acak
-        $loans = Loan::factory()->count(15)->create();
+        // // 6. Buat data peminjaman (Loan) acak
+        // $loans = Loan::factory()->count(15)->create();
 
-        // 7. Buat LoanItem sesuai loan yang dibuat
-        foreach ($loans as $loan) {
+        // // 7. Buat LoanItem sesuai loan yang dibuat
+        // foreach ($loans as $loan) {
 
-            // Pilih item random 1 sampai 3
-            $selectedItems = Item::inRandomOrder()->take(rand(1, 3))->get();
+        //     // Pilih item random 1 sampai 3
+        //     $selectedItems = Item::inRandomOrder()->take(rand(1, 3))->get();
 
-            foreach ($selectedItems as $item) {
-                LoanItem::create([
-                    'loan_id' => $loan->id,
-                    'item_id' => $item->id,
-                    'quantity' => fake()->numberBetween(1, 2),
-                ]);
-            }
-        }
+        //     foreach ($selectedItems as $item) {
+        //         LoanItem::create([
+        //             'loan_id' => $loan->id,
+        //             'item_id' => $item->id,
+        //             'quantity' => fake()->numberBetween(1, 2),
+        //         ]);
+        //     }
+        // }
     }
 }
