@@ -66,11 +66,9 @@
             </div>
 
             <div class="col-lg-6 text-center">
-              <img src="/storage/landing-illustration.png" alt="IoT lab illustration" class="img-fluid shadow-sm" style="max-height:340px; object-fit:contain;">
-              <small class="d-block text-muted mt-2">Ilustrasi (ganti dengan gambar lab Anda di `public/`)</small>
+              <img src="/storage/landing-illustration.jpeg" alt="IoT lab illustration" class="img-fluid shadow-sm" style="max-height:340px; object-fit:contain;">
             </div>
           </div>
-        </div>
       </section>
 
       <section id="features" class="py-5">
