@@ -32,7 +32,7 @@
     <div id="itemsTable" class="card shadow-sm">
         <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="table table-striped mb-0">
+                <table class="table table-striped mb-0 datatable">
                     <thead class="bg-light">
                         <tr>
                             <th>Nama Barang</th>
@@ -79,7 +79,12 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="6" class="text-center">Belum ada barang tersedia</td>
+                            <td class="text-muted py-3">Belum ada barang tersedia.</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         @endforelse
                     </tbody>
@@ -132,7 +137,7 @@
                 </div>
             </div>
         @empty
-            <div class="col-12 text-center py-5 text-muted">Belum ada barang tersedia.</div>
+            <div class="col-12 text-center text-muted py-3">Belum ada barang tersedia.</div>
         @endforelse
     </div>
 </div>
