@@ -10,7 +10,7 @@
 
     <div class="card shadow">
         <div class="card-body p-0">
-            <table class="table table-hover mb-0">
+                <table class="table table-striped mb-0 datatable">
                 <thead class="table-light">
                     <tr>
                         <th>#</th>
