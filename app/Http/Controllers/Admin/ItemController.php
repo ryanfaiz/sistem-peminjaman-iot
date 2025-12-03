@@ -29,7 +29,7 @@ class ItemController extends Controller
             'code' => 'required|string|max:50|unique:items',
             'total_quantity' => 'required|integer|min:1',
             'description' => 'nullable|string',
-            'condition' => ['required', Rule::in(['Baik', 'Perlu Perawatan', 'Rusak'])],
+            'condition' => ['required', Rule::in(['Baik', 'Rusak Ringan', 'Rusak Berat'])],
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
@@ -69,7 +69,8 @@ class ItemController extends Controller
             'code' => ['required', 'string', 'max:50', Rule::unique('items')->ignore($item->id)], 
             'total_quantity' => 'required|integer|min:1',
             'description' => 'nullable|string',
-            'condition' => ['required', Rule::in(['Baik', 'Perlu Perawatan', 'Rusak'])],
+            // Accept both legacy and more specific condition labels
+            'condition' => ['required', Rule::in(['Baik', 'Perlu Perawatan', 'Rusak', 'Rusak Ringan', 'Rusak Berat'])],
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
