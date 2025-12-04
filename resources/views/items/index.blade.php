@@ -40,7 +40,15 @@
                         @forelse($items as $item)
                         <tr>
                             <td>
-                                <a href="{{ route('user.items.show', $item) }}" class="text-primary fw-bold text-decoration-none">{{ $item->name }}</a>
+                                @auth
+                                    @if(auth()->user()->hasRole('admin'))
+                                        <a href="{{ route('admin.items.show', $item) }}" class="text-primary fw-bold text-decoration-none">{{ $item->name }}</a>
+                                    @else
+                                        <a href="{{ route('user.items.show', $item) }}" class="text-primary fw-bold text-decoration-none">{{ $item->name }}</a>
+                                    @endif
+                                @else
+                                    <a href="{{ route('user.items.show', $item) }}" class="text-primary fw-bold text-decoration-none">{{ $item->name }}</a>
+                                @endauth
                             </td>
                             <td>{{ $item->code }}</td>
                             <td class="text-center">{{ $item->condition }}</td>
@@ -99,7 +107,17 @@
                         @endif
                     </div>
                     <div class="card-body d-flex flex-column">
-                        <h6 class="card-title mb-1"><a href="{{ route('user.items.show', $item) }}" class="text-decoration-none">{{ $item->name }}</a></h6>
+                        <h6 class="card-title mb-1">
+                            @auth
+                                @if(auth()->user()->hasRole('admin'))
+                                    <a href="{{ route('admin.items.show', $item) }}" class="text-decoration-none">{{ $item->name }}</a>
+                                @else
+                                    <a href="{{ route('user.items.show', $item) }}" class="text-decoration-none">{{ $item->name }}</a>
+                                @endif
+                            @else
+                                <a href="{{ route('user.items.show', $item) }}" class="text-decoration-none">{{ $item->name }}</a>
+                            @endauth
+                        </h6>
                         <div class="small text-muted mb-2">{{ $item->code }}</div>
                         <div class="mt-auto d-flex justify-content-between align-items-center">
                             <div>
@@ -107,7 +125,15 @@
                                 <div class="small text-muted">Total: {{ $item->total_quantity ?? '-' }}</div>
                             </div>
                             <div class="btn-group">
-                                <a href="{{ route('user.items.show', $item) }}" class="btn btn-sm btn-primary" title="Lihat"><i class="fas fa-eye"></i></a>
+                                @auth
+                                    @if(auth()->user()->hasRole('admin'))
+                                        <a href="{{ route('admin.items.show', $item) }}" class="btn btn-sm btn-primary" title="Lihat"><i class="fas fa-eye"></i></a>
+                                    @else
+                                        <a href="{{ route('user.items.show', $item) }}" class="btn btn-sm btn-primary" title="Lihat"><i class="fas fa-eye"></i></a>
+                                    @endif
+                                @else
+                                    <a href="{{ route('user.items.show', $item) }}" class="btn btn-sm btn-primary" title="Lihat"><i class="fas fa-eye"></i></a>
+                                @endauth
                                 @auth
                                     @if(auth()->user()->hasRole('admin'))
                                         <a href="{{ route('admin.items.edit', $item) }}" class="btn btn-sm btn-outline-warning me-1">
